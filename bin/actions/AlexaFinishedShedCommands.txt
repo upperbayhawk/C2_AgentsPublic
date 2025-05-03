@@ -1,0 +1,8 @@
+#Alexa. What day is it?
+Alexa. What time is it?
+Alexa... Ask my car what is the range?
+#Alexa...Turn on club.
+#Alexa... Ask my car to start charging.
+#Alexa..Turn down the temperature by 2 degrees
+#Alexa. Turn on hall.
+#Alexa. Turn off hall.

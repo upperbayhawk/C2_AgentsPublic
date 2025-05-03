@@ -1,0 +1,5 @@
+Alexa. What day is it?
+Alexa. What time is it?
+#Alexa. Turn on hall.
+#Alexa. Turn off hall.
+

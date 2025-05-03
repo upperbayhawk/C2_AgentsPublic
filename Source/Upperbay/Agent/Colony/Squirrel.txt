@@ -1,0 +1,154 @@
+﻿   <system.net>
+    <mailSettings>
+      <smtp from="dave@upperbay.com">
+        <network host="mail.upperbay.com" port="25" userName="dhardin" password="WEUEhgn" defaultCredentials="true"/>
+      </smtp>
+    </mailSettings>
+  </system.net><system.serviceModel>
+    <diagnostics wmiProviderEnabled="false">
+      <messageLogging maxMessagesToLog="30000" logEntireMessage="false" logMessagesAtServiceLevel="false" logMalformedMessages="false" logMessagesAtTransportLevel="false">
+      </messageLogging>
+    </diagnostics>
+    <services>
+      <service name="Upperbay.Assistant.AzureChannel">
+        <endpoint name="RelayEndpoint" contract="Upperbay.Agent.Interfaces.IAzureMessageService" binding="netEventRelayBinding" bindingConfiguration="default" address=""/>
+      </service>
+      <service name="Upperbay.Worker.Network.AtomAccelerator">
+        <endpoint name="RelayEndpoint" contract="Upperbay.Worker.Network.IAzureAtomService" binding="netEventRelayBinding" bindingConfiguration="default" address=""/>
+      </service>
+      <service name="WorkflowServiceTest.Workflow1" behaviorConfiguration="WorkflowServiceTest.Workflow1Behavior">
+        <host>
+          <baseAddresses>
+            <add baseAddress="http://localhost:8731/Design_Time_Addresses/WorkflowServiceTest/Workflow1/"/>
+          </baseAddresses>
+        </host>
+        <endpoint address="" binding="wsHttpContextBinding" contract="WorkflowServiceTest.IWorkflow1">
+          <!-- 
+              Upon deployment, the following identity element should be removed or replaced to reflect the 
+              identity under which the deployed service runs.  If removed, WCF will infer an appropriate identity 
+              automatically.
+          -->
+          <identity>
+            <dns value="localhost"/>
+          </identity>
+        </endpoint>
+        <endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange"/>
+      </service>
+      <service behaviorConfiguration="Upperbay.AgentObject.IDataAccessorServiceBehavior" name="Upperbay.AgentObject.DataAccessorService">
+        <endpoint address="http" binding="wsHttpBinding" name="http" contract="Upperbay.AgentObject.IDataAccessorService">
+          <identity>
+            <dns value="localhost"/>
+          </identity>
+        </endpoint>
+        <endpoint address="basic" binding="basicHttpBinding" name="basic" contract="Upperbay.AgentObject.IDataAccessorService">
+          <identity>
+            <dns value="localhost"/>
+          </identity>
+        </endpoint>
+        <endpoint address="mex" binding="mexHttpBinding" name="mex" contract="IMetadataExchange"/>
+        <endpoint address="np" binding="netNamedPipeBinding" bindingConfiguration="" name="np" contract="Upperbay.AgentObject.IDataAccessorService"/>
+        <endpoint address="tcp" binding="netTcpBinding" bindingConfiguration="" name="tcp" contract="Upperbay.AgentObject.IDataAccessorService"/>
+        <host>
+          <baseAddresses>
+            <add baseAddress="http://localhost:9999/DataAccessorBase/"/>
+            <add baseAddress="net.tcp://localhost:9998/DataAccessorBase"/>
+            <add baseAddress="net.pipe://localhost/DataAccessorBase"/>
+          </baseAddresses>
+        </host>
+      </service>
+      <service behaviorConfiguration="Upperbay.AgentObject.IModelAgentServiceBehavior" name="Upperbay.AgentObject.ModelAgentService">
+        <endpoint address="http" binding="wsHttpBinding" name="http" contract="Upperbay.AgentObject.IModelAgentService">
+          <identity>
+            <dns value="localhost"/>
+          </identity>
+        </endpoint>
+        <endpoint address="basic" binding="basicHttpBinding" name="basic" contract="Upperbay.AgentObject.IModelAgentService">
+          <identity>
+            <dns value="localhost"/>
+          </identity>
+        </endpoint>
+        <endpoint address="mex" binding="mexHttpBinding" name="mex" contract="IMetadataExchange"/>
+        <endpoint address="np" binding="netNamedPipeBinding" bindingConfiguration="" name="np" contract="Upperbay.AgentObject.IModelAgentService"/>
+        <endpoint address="tcp" binding="netTcpBinding" bindingConfiguration="" name="tcp" contract="Upperbay.AgentObject.IModelAgentService"/>
+        <host>
+          <baseAddresses>
+            <add baseAddress="http://localhost:9999/ModelAgentBase/"/>
+            <add baseAddress="net.tcp://localhost:9998/ModelAgentBase"/>
+            <add baseAddress="net.pipe://localhost/ModelAgentBase"/>
+          </baseAddresses>
+        </host>
+      </service>
+    </services>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="WorkflowServiceTest.Workflow1Behavior">
+          <serviceMetadata httpGetEnabled="true"/>
+          <serviceDebug includeExceptionDetailInFaults="false"/>
+          <serviceCredentials>
+            <windowsAuthentication allowAnonymousLogons="false" includeWindowsGroups="true"/>
+          </serviceCredentials>
+        </behavior>
+        <behavior name="Upperbay.AgentObject.IDataAccessorServiceBehavior">
+          <!-- To avoid disclosing metadata information, 
+          set the value below to false and remove the metadata endpoint above before deployment -->
+          <serviceMetadata httpGetEnabled="True"/>
+          <!-- To receive exception details in faults for debugging purposes, 
+          set the value below to true.  Set to false before deployment 
+          to avoid disclosing exception information -->
+          <serviceDebug includeExceptionDetailInFaults="False"/>
+        </behavior>
+        <behavior name="Upperbay.AgentObject.IModelAgentServiceBehavior">
+          <!-- To avoid disclosing metadata information, 
+          set the value below to false and remove the metadata endpoint above before deployment -->
+          <serviceMetadata httpGetEnabled="True"/>
+          <!-- To receive exception details in faults for debugging purposes, 
+          set the value below to true.  Set to false before deployment 
+          to avoid disclosing exception information -->
+          <serviceDebug includeExceptionDetailInFaults="False"/>
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <client>
+      <!-- chat instance participating in the mesh -->
+      <endpoint name="Universe" address="net.p2p://upperbayAgentWorld/ServiceModelSamples/CephianUniverse" binding="netPeerTcpBinding" bindingConfiguration="BindingCustomResolver" contract="Upperbay.Agent.Interfaces.IPeerMessageService">
+      </endpoint>
+      <endpoint name="StarCluster" address="net.p2p://upperbayAgentWorld/ServiceModelSamples/CephianStarCluster" binding="netPeerTcpBinding" bindingConfiguration="BindingCustomResolver" contract="Upperbay.Agent.Interfaces.IPeerMessageService">
+      </endpoint>
+      <endpoint name="OuterGroup" address="net.p2p://upperbayAgentWorld/ServiceModelSamples/CephianOuterGroup" binding="netPeerTcpBinding" bindingConfiguration="BindingCustomResolver" contract="Upperbay.Agent.Interfaces.IPeerMessageService">
+      </endpoint>
+      <endpoint name="Galaxy" address="net.p2p://upperbayAgentWorld/ServiceModelSamples/CephianGalaxy" binding="netPeerTcpBinding" bindingConfiguration="BindingCustomResolver" contract="Upperbay.Agent.Interfaces.IPeerMessageService">
+      </endpoint>
+      <endpoint name="ORION" address="net.p2p://upperbayAgentWorld/ServiceModelSamples/CephianOrion" binding="netPeerTcpBinding" bindingConfiguration="BindingCustomResolver" contract="Upperbay.Agent.Interfaces.IPeerMessageService">
+      </endpoint>
+      <endpoint name="RelayEndpoint" contract="Upperbay.Agent.Interfaces.IAzureMessageService" binding="netEventRelayBinding" bindingConfiguration="default" address="http://AddressToBeReplacedInCode/"/>
+      <endpoint name="RelayEndpoint" contract="Upperbay.Worker.Network.IAzureAtomService" binding="netEventRelayBinding" bindingConfiguration="default" address="http://AddressToBeReplacedInCode/"/>
+    </client>
+    <bindings>
+      <netEventRelayBinding>
+        <binding name="default"/>
+      </netEventRelayBinding>
+      <netPeerTcpBinding>
+        <!-- Refer to Peer channel security samples on how to configure netPeerTcpBinding for security -->
+        <binding name="BindingDefault" port="0">
+          <security mode="None"/>
+          <resolver mode="Auto"/>
+        </binding>
+        <binding name="BindingCustomResolver" port="0" maxReceivedMessageSize="200000">
+          <readerQuotas maxDepth="2147483647" maxStringContentLength="2147483647" maxArrayLength="2147483647" maxBytesPerRead="2147483647" maxNameTableCharCount="2147483647"/>
+          <security mode="None"/>
+          <resolver mode="Pnrp">
+            <!--	<resolver mode="Custom">-->
+            <!--<custom address = "net.tcp://localhost/servicemodelsamples/peerResolverService"
+                                binding="netTcpBinding" 
+                                bindingConfiguration="Binding3" />-->
+          </resolver>
+        </binding>
+      </netPeerTcpBinding>
+      <netTcpBinding>
+        <!-- You can change security mode to enable security -->
+        <binding name="Binding3">
+          <security mode="None"/>
+        </binding>
+      </netTcpBinding>
+    </bindings>
+  </system.serviceModel>

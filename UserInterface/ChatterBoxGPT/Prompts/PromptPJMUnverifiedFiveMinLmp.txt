@@ -1,2 +1,0 @@
-The CSV file has two columns. Time and load. What is the maximum value, minimum value and average value of load in the following CSV data? Look at all values in the load column.
-Data values are

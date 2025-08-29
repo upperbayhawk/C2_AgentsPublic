@@ -1,0 +1,28 @@
+﻿# Run in *Windows PowerShell* (not cmd), as *Administrator*
+
+# Verify PowerShell version
+$PSVersionTable.PSVersion
+
+# 1) Create a self-signed cert for localhost
+$cert = New-SelfSignedCertificate `
+  -DnsName "localhost" `
+  -FriendlyName "Dev HTTPS (localhost)" `
+  -CertStoreLocation "Cert:\LocalMachine\My" `
+  -KeyExportPolicy Exportable `
+  -NotAfter (Get-Date).AddYears(2)
+
+# 2) Trust it locally (add to Trusted Root)
+$store = New-Object System.Security.Cryptography.X509Certificates.X509Store("Root","LocalMachine")
+$store.Open("ReadWrite")
+$store.Add($cert)
+$store.Close()
+
+# 3) Bind cert to HTTPS port 5001 and grant URL ACL to your user
+$thumb = ($cert.Thumbprint -replace ' ', '')
+$appId = "{D6C2B9C2-6E74-4D71-8E2E-1234567890AB}"  # any GUID you choose
+
+netsh http add sslcert ipport=0.0.0.0:5001 certhash=$thumb appid=$appId
+netsh http add urlacl url=https://+:5001/callback/ user=Dave
+#####
+#netsh http delete sslcert ipport=0.0.0.0:5001
+#netsh http delete urlacl url=https://+:5001/callback/

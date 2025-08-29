@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F07EDF2D-3FA2-4797-B7F3-C9B5B7709A33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Upperbay.AgentObject</RootNamespace>
+    <AssemblyName>Upperbay.AgentObject.PowerAgent</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>false</PreferNativeArm64>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PowerAgent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\UserInterface\SmartThingsScanner\SmartThingsScanner.csproj">
+      <Project>{2267ff86-e257-4657-89a1-b1dcd650eb1a}</Project>
+      <Name>SmartThingsScanner</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Agent\ColonyMatrix\ColonyMatrix.csproj">
+      <Project>{43B4F136-03C1-40A2-A501-5C57F964AA37}</Project>
+      <Name>ColonyMatrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Agent\Colony\Colony.csproj">
+      <Project>{3d9f726b-44c1-4e1b-aab4-84cc40b04e7b}</Project>
+      <Name>Colony</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Agent\ConfigurationSettings\ConfigurationSettings.csproj">
+      <Project>{952BC164-1F7D-4801-857F-C28E403C8B47}</Project>
+      <Name>ConfigurationSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Agent\Interfaces\Interfaces.csproj">
+      <Project>{6A4C0B81-44BB-4DE2-8020-9CDCF5B7E07C}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\Cache\Cache.csproj">
+      <Project>{f2594b9f-7db5-46f9-a228-f54331fba6d5}</Project>
+      <Name>Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\CloudMqttPublisher\CloudMqttPublisher.csproj">
+      <Project>{d8e9aab6-a9d8-4f1f-b164-483c39e17b6c}</Project>
+      <Name>CloudMqttPublisher</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\CloudMqttSecureSubscriber\CloudMqttSecureSubscriber.csproj">
+      <Project>{e746cca4-a896-4ac9-b9f6-12e3f714405e}</Project>
+      <Name>CloudMqttSecureSubscriber</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\EtherReadAccessor\EtherReadAccessor.csproj">
+      <Project>{9024d80a-2066-4a43-a1fc-51f2b627a2bc}</Project>
+      <Name>EtherReadAccessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\EtherWriteAccessor\EtherWriteAccessor.csproj">
+      <Project>{6d1feb82-da9e-4ca3-9424-c95828e4556f}</Project>
+      <Name>EtherWriteAccessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\EventReactor\EventReactor.csproj">
+      <Project>{4b618a73-3a87-49fd-8e5d-a78bafb57a16}</Project>
+      <Name>EventReactor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\GameEventReactor\GameEventReactor.csproj">
+      <Project>{b4906cf1-2208-4865-a5b7-42a790ddd0a0}</Project>
+      <Name>GameEventReactor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\ManualInput\ManualInput.csproj">
+      <Project>{91facbd5-2b70-4d5d-a355-9fcb0d7d6c35}</Project>
+      <Name>ManualInput</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\MqttPublisher\MqttPublisher.csproj">
+      <Project>{488d2cec-46cc-4e30-bf16-b994b9cb66b9}</Project>
+      <Name>MqttPublisher</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\MqttSubscriber\MqttSubscriber.csproj">
+      <Project>{02176a32-ff96-4e29-9695-50cc6ab9fa08}</Project>
+      <Name>MqttSubscriber</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\Simulator\Simulator.csproj">
+      <Project>{C0D7AAA4-0E12-4F66-AAE0-D7BFB1344220}</Project>
+      <Name>Simulator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\SmartThingsPublisher\SmartthingsPublisher.csproj">
+      <Project>{72277de4-6df3-439a-b32d-c1115e21f713}</Project>
+      <Name>SmartthingsPublisher</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\ThingSpeakReadAccessor\ThingSpeakReadAccessor.csproj">
+      <Project>{1142b988-97be-4ea8-aa06-8d88e1abbfed}</Project>
+      <Name>ThingSpeakReadAccessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\ThingSpeakWriteAccessor\ThingSpeakWriteAccessor.csproj">
+      <Project>{507e588f-d906-484b-b66e-583b9e3ca0c1}</Project>
+      <Name>ThingSpeakWriteAccessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\VariableProcessing\VariableProcessor.csproj">
+      <Project>{1DA79A0F-67F6-4906-9E60-DD150A400278}</Project>
+      <Name>VariableProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Assistant\WeatherService\WeatherService.csproj">
+      <Project>{EAFA6C7C-7DCB-4C91-8373-6FB7B24F51C7}</Project>
+      <Name>WeatherService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Library\Library.csproj">
+      <Project>{682EE7BC-44BC-43C1-97DA-692990A156A4}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Logging\Logging.csproj">
+      <Project>{B2F9681A-EF44-4CBD-A018-AF893E29D6C7}</Project>
+      <Name>Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\EtherAccess\EtherAccess.csproj">
+      <Project>{bb75fb10-cde9-4553-8dbc-232ed761f272}</Project>
+      <Name>EtherAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\JSON\JSON.csproj">
+      <Project>{c61b179b-76ed-4ed0-b23e-b0928b0b410e}</Project>
+      <Name>JSON</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\MQTT\MQTT.csproj">
+      <Project>{e2d3521a-df3b-48e5-b590-87f63a2c6c9f}</Project>
+      <Name>MQTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\PostOffice\PostOffice.csproj">
+      <Project>{3116bfaf-3ec0-4c40-b0f9-bb90ad78891b}</Project>
+      <Name>PostOffice</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\SmartThings\SmartThings.csproj">
+      <Project>{697322b4-3c6c-4f4d-9ae1-cd13b7f05839}</Project>
+      <Name>SmartThings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\ThingSpeak\ThingSpeak.csproj">
+      <Project>{038fd053-be24-4241-937c-f336fe558af1}</Project>
+      <Name>ThingSpeak</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\Timers\Timers.csproj">
+      <Project>{ddf9e0cd-c134-4afc-ac53-1bb628771bb4}</Project>
+      <Name>Timers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Worker\Voice\Voice.csproj">
+      <Project>{7fc7aa89-1a45-40b3-9982-140dbce6b54c}</Project>
+      <Name>Voice</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if exist "$(IntermediateOutputPath)" rmdir /s /q "$(IntermediateOutputPath)"
+
+</PreBuildEvent>
+  </PropertyGroup>
+</Project>

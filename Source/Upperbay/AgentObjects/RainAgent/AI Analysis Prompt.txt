@@ -1,0 +1,21 @@
+Analyze the dataset of sensor readings (columns: Timestamp, Zipcode, Community, LotNumber, DeviceName, Temperature, Humidity). 
+
+1. Organize the analysis at three levels of aggregation:
+   - By Zipcode
+   - By Community
+   - By LotNumber
+
+2. For each grouping, compute descriptive statistics (mean, median, min, max, standard deviation) for both Temperature and Humidity.
+
+3. Generate **time-series graphs** for Temperature and Humidity:
+   - Plot overall trends across time.
+   - Plot averages per Zipcode, Community, and LotNumber.
+   - Highlight anomalies (e.g., sudden drops to 0% humidity, extreme spikes, or missing data).
+
+4. Identify and summarize **anything unusual** in the data:
+   - Outliers compared to group averages.
+   - Possible sensor errors (such as 0% humidity or implausible temperature swings).
+   - Large variance between lots or communities.
+
+Provide both the statistical summary tables and the time-series visualizations. End with a plain-language summary of what looks unusual in the dataset.
+

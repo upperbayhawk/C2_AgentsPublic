@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="yes"?>
+<ConsumerMeter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.upperbay.com/xml/p2dml-v0001">
+    <ID>sdfasd453254</ID>
+    <Description>Status Information From Consumer</Description>
+    <PublishedDate>2003-01-01T00:00:00-05:00</PublishedDate>
+    <PublishedTime>2004-03-04T00:00:00-05:00</PublishedTime>
+    <StartTime>2004-02-02T00:00:00-05:00</StartTime>
+    <EndTime>2004-03-04T00:00:00-05:00</EndTime>
+    <LatestStartTime>2004-04-10T00:00:00-04:00</LatestStartTime>
+    <TimeReference>GPS</TimeReference>
+    <Priority>1</Priority>
+    <SequenceNumber>44432</SequenceNumber>
+    <PowerConsumption>
+      <StartTime>2004-02-02T00:00:00-05:00</StartTime>
+      <EndTime>2004-03-04T00:00:00-05:00</EndTime>
+      <ValueString>50.0</ValueString>
+      <DataType>REAL</DataType>
+      <Units>KWHr</Units>
+      <Category></Category>
+    </PowerConsumption>
+</ConsumerMeter>

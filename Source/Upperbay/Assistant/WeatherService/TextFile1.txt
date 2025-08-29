@@ -1,0 +1,34 @@
+﻿xmlp1.XPath = "/dwml/data/[2]"; //this time-layout is the 2nd data child
+int numtimeelements = xmlp1.XChildren;
+for (int i = 1; i<=numtimeelements; i++) 
+{
+ xmlp1.XPath = "/dwml/data/[2]/[" + i.ToString() + "]";
+ if (xmlp1.XElement == "start-valid-time") 
+ {
+  daytitles.Add(xmlp1.Attr("period-name"));
+ }
+}
+Meteorological Data
+The guts of all of this weather data is found in the /dwml/data/parameters element. There are several XML child elements here with different pieces of data for each time period: 
+
+<temperature> - the min and max temperatures. 
+<probability-of-precipitation> - the chance of precipitation percentage. 
+<weather> - A brief phrase describing the weather conditions in English 
+<conditions-icon> - a URL to an image describing the weather conditios. 
+
+To deal with all of this data, I'll visit each child of the /dwml/data/parameters/ element and parse it appropriately: 
+
+xmlp1.XPath = "/dwml/data/parameters"; 
+int numparameterelements = xmlp1.XChildren;
+for (int i=1; i<=numparameterelements; i++) 
+{
+ xmlp1.XPath = "/dwml/data/parameters/[" + i.ToString() + "]";
+ switch (xmlp1.XElement) 
+ {
+  case("temperature"): GetTemperatures(); break;
+  case("probability-of-precipitation"): GetPrecipitationChance(xmlp1.XPath); break;
+  case("weather"): GetWeather(xmlp1.XPath); break;
+  case("conditions-icon"): GetIcons(xmlp1.XPath); break;
+ }  
+} Each of these functions above (GetTemperatures, GetPrecipitationChance, GetWeather, and GetIcons) work similarly to the code above that strips out the day titles. These functions simply populate an ArrayList with their information. After all of the ArrayLists are populated, I display the data that I've gathered, as shown in the image above. 
+
